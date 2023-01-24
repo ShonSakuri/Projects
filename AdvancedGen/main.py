@@ -39,3 +39,4 @@ def PassWord(Length,Format):
     pyperclip.copy(result)
     print("Password copied to clipboard.")
 PassWord(Length_inp,Format_inp)
+
