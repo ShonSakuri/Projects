@@ -109,7 +109,8 @@ def reset():
             newvalues = {"$set": {'password': password} }
             collection.update_one(filter, newvalues)
       else:
-            print("The secret you mention not valid\nTry again.")
+            print(Fore.LIGHTRED_EX,"The secret you mention not valid\nTry again.")
+            print(Style.RESET_ALL)
             reset()
 
 def getch():
