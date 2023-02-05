@@ -31,7 +31,7 @@ Reset Password - You need to click 3 key to reset your password.
 def admin():
       tr = True
       while tr:
-            commands = ["removemoney","addmoney","quit","setmoney","deleteuser"]
+            commands = ["user","removemoney","addmoney","quit","setmoney","deleteuser"]
             print(Fore.YELLOW,commands)
             print(Style.RESET_ALL)
             time.sleep(3)
