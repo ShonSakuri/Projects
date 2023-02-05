@@ -28,8 +28,6 @@ Login - You need to click 2 Key to Login.
 Reset Password - You need to click 3 key to reset your password.
 """)
 
-## To do List [ מערכת של תשלומים/שאפשר להכנס למינוס/מכסה אשראי/הלוואות בריבית ]
-
 def admin():
       tr = True
       while tr:
