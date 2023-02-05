@@ -1,12 +1,9 @@
-
-
-
 import random
 
-def shon():
+def Shon():
 
       lst = ["smash","pass"]
       
       return random.choice(lst)
 
-print(shon())
+print(Shon())
