@@ -22,7 +22,7 @@ If you would like to contribute to this repository, please fork the repository a
 
 ## Author
 
-- **ShonSakuri** - [ShonSakuri](https://github.com/ShonSakuri)
+- **ShonDevelopment** - [ShonDevelopment](https://github.com/ShonDevelopment)
 
 ## Acknowledgments
 
