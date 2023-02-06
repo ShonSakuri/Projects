@@ -8,7 +8,7 @@ from colorama import Fore, Style
 
 
 client = pymongo.MongoClient(
-    "mongodb+srv://shon:SeanSak123@cluster0.wrckk3j.mongodb.net")
+    "MongoKey")
 
 db = client["Bank"]
 collection = db["users"]
