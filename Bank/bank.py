@@ -141,8 +141,8 @@ def login():
                                       balance = main['bank']
                                       balance2 = user['bank']
                                       amount = int(input("Money <-> "))
-                                      if amount > balance:
-                                        print(Fore.RED,"You don't have enough money in your balance.")
+                                      if balance < -5000:
+                                        print(Fore.RED,f"You cant Send money you have {balance} in your bank.")
                                         print(Style.RESET_ALL)
                                       else:
                                         filter = {"username": usr}
