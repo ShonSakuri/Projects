@@ -15,11 +15,10 @@ server.bind(ADDR)
 
 def handle_client(connection,addr):
     print(f"[New Connection] {addr} connected.")
-    
+
     connected = True
     while connected:
-        msg_length = connection.recv(HEADER).decode(FORMAT)
-        if msg_length:
+        if msg_length := connection.recv(HEADER).decode(FORMAT):
             msg_length = int(msg_length)
             msg = connection.recv(msg_length).decode(FORMAT)
             if msg == DISCONNECT_MESSAGE:
