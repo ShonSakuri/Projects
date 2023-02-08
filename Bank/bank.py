@@ -34,7 +34,9 @@ def contract():
     ................
 
     Denied - Click [N]
+
     Agree - Click [Y]
+
     """)
     char = getch()
 
