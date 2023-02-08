@@ -5,9 +5,10 @@ import os
 import termios
 from colorama import Fore, Style
 import getpass
+import time
 
 class Database:
-    client = pymongo.MongoClient("MongoDB KEY")
+    client = pymongo.MongoClient("")
     db = client["Bank"]
     collection = db["users"]
 
@@ -21,9 +22,30 @@ def getch():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
+def contract():
+    print(Fore.BLACK,"""
+    Demo Contract: 
+    
+    ................
+    ................
+    ................
+    ................
+    ................
+    ................
+
+    Denied - Click [N]
+    Agree - Click [Y]
+    """)
+    char = getch()
+
+    if char == "n":
+        return "n"
+    elif char == "y":
+        return "y"
+
 def menu():
     print(Fore.LIGHTMAGENTA_EX,"""
-    1. Register
+    1. Contract, Register
     2. Login
     3. Reset Password
     """)
@@ -199,31 +221,38 @@ def login():
             user()
 
 def register():
-    username = input("username <-> ")
-    password = getpass.getpass("password <-> ")
-    user = Database.collection.find_one({"username": username})
-    secret = input(
-        "Enter your secret word.\ncan be your Dog name or maybe your nickname.\nYou have to remember it after you write it (Min of 2 characters).")
-    if len(secret) < 2:
-        os.system("clear")
-        print(Fore.LIGHTRED_EX, "The secret has to be 2 or more length Try again.")
+    if contract() == "n":
+        print(Fore.RED, "Denied.")
+    if contract() == "y":
+        print(Fore.GREEN, "Welcome to [Shon Bank] !")
+        time.sleep(2)
         print(Style.RESET_ALL)
-        register()
-    if user:
         os.system("clear")
-        print(Fore.RED, "Username not available.\nPlease try again.")
-        print(Style.RESET_ALL)
-        register()
-    else:
-        if len(password) < 8:
+        username = input("username <-> ")
+        password = getpass.getpass("password <-> ")
+        user = Database.collection.find_one({"username": username})
+        secret = input(
+            "Enter your secret word.\ncan be your Dog name or maybe your nickname.\nYou have to remember it after you write it (Min of 2 characters).")
+        if len(secret) < 2:
             os.system("clear")
-            print(Fore.LIGHTRED_EX,
-                  "The password has to be 8 or more length Try again.")
+            print(Fore.LIGHTRED_EX, "The secret has to be 2 or more length Try again.")
             print(Style.RESET_ALL)
             register()
-        Database.collection.insert_one({'username': username, 'password': password,'bank': 0, 'cash': 5000, 'secret_word': secret, 'admin': "False"})
-        print(Fore.LIGHTGREEN_EX, "User Registered.")
-        print(Style.RESET_ALL)
+        if user:
+            os.system("clear")
+            print(Fore.RED, "Username not available.\nPlease try again.")
+            print(Style.RESET_ALL)
+            register()
+        else:
+            if len(password) < 8:
+                os.system("clear")
+                print(Fore.LIGHTRED_EX,
+                    "The password has to be 8 or more length Try again.")
+                print(Style.RESET_ALL)
+                register()
+            Database.collection.insert_one({'username': username, 'password': password,'bank': 0, 'cash': 5000, 'secret_word': secret, 'admin': "False"})
+            print(Fore.LIGHTGREEN_EX, "User Registered.")
+            print(Style.RESET_ALL)
 
 def reset():
     secret_word = input("Enter your account Secret Key.")
@@ -233,8 +262,7 @@ def reset():
         password = getpass.getpass('Enter the new password:')
         if len(password) < 8:
             os.system("clear")
-            print(Fore.LIGHTRED_EX,
-                  "The password has to be 8 or more length Try again.")
+            print(Fore.LIGHTRED_EX,"The password has to be 8 or more length Try again.")
             print(Style.RESET_ALL)
             reset()
         filter = {"username": usr}
