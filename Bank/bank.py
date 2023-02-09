@@ -9,7 +9,7 @@ import time
 import hashlib
 
 class Database:
-    client = pymongo.MongoClient("Mongo KEY")
+    client = pymongo.MongoClient("mongodb+srv://shon:SeanSak123@cluster0.wrckk3j.mongodb.net")
     db = client["Bank"]
     collection = db["users"]
 
