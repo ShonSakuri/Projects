@@ -6,6 +6,7 @@ import termios
 from colorama import Fore, Style
 import getpass
 import time
+import hashlib
 
 class Database:
     client = pymongo.MongoClient("")
@@ -122,14 +123,11 @@ def admin():
 def login():
     username = input("username <-> ")
     password = getpass.getpass("password <-> ")
-    user = Database.collection.find_one({"username": username, "password": password})
-    os.system("clear")
-
+    user = Database.collection.find_one({"username": username, "password": hashlib.sha256(password.encode()).hexdigest()})
     if not user:
         print(Fore.RED, "User not found")
         print(Style.RESET_ALL)
     else:
-        user = Database.collection.find_one({"username": username, "password": password})
         if user['admin'] == "True":
             admin()
             exit()
@@ -232,6 +230,16 @@ def register():
         os.system("clear")
         username = input("username <-> ")
         password = getpass.getpass("password <-> ")
+        if len(password) < 8:
+            os.system("clear")
+            print(Fore.LIGHTRED_EX,
+                "The password has to be 8 or more length Try again.")
+            print(Style.RESET_ALL)
+            register()
+        string_password = password
+        encoded_password = string_password.encode()
+        hashed_password = hashlib.sha256(encoded_password).hexdigest()
+
         user = Database.collection.find_one({"username": username})
         secret = input(
             "Enter your secret word.\ncan be your Dog name or maybe your nickname.\nYou have to remember it after you write it (Min of 2 characters).")
@@ -246,15 +254,10 @@ def register():
             print(Style.RESET_ALL)
             register()
         else:
-            if len(password) < 8:
-                os.system("clear")
-                print(Fore.LIGHTRED_EX,
-                    "The password has to be 8 or more length Try again.")
-                print(Style.RESET_ALL)
-                register()
-            Database.collection.insert_one({'username': username, 'password': password,'bank': 0, 'cash': 5000, 'secret_word': secret, 'admin': "False"})
+            Database.collection.insert_one({'username': username, 'password': hashed_password, 'bank': 0, 'cash': 5000, 'secret_word': secret, 'admin': "False"})
             print(Fore.LIGHTGREEN_EX, "User Registered.")
             print(Style.RESET_ALL)
+
 
 def reset():
     secret_word = input("Enter your account Secret Key.")
