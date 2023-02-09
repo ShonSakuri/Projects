@@ -9,7 +9,7 @@ import time
 import hashlib
 
 class Database:
-    client = pymongo.MongoClient("")
+    client = pymongo.MongoClient("Mongo KEY")
     db = client["Bank"]
     collection = db["users"]
 
@@ -24,20 +24,10 @@ def getch():
     return ch
 
 def contract():
-    print(Fore.BLACK,"""
-    Demo Contract: 
-    
-    ................
-    ................
-    ................
-    ................
-    ................
-    ................
-
+    os.system("clear")
+    print(Fore.BLUE,"""
     Denied - Click [N]
-
     Agree - Click [Y]
-
     """)
     char = getch()
 
@@ -233,8 +223,9 @@ def register():
         if len(password) < 8:
             os.system("clear")
             print(Fore.LIGHTRED_EX,
-                "The password has to be 8 or more length Try again.")
+                "The password has to be 8 or more length Try again!")
             print(Style.RESET_ALL)
+            os.system("clear")
             register()
         string_password = password
         encoded_password = string_password.encode()
@@ -242,18 +233,19 @@ def register():
 
         user = Database.collection.find_one({"username": username})
         secret = input(
-            "Enter your secret word.\ncan be your Dog name or maybe your nickname.\nYou have to remember it after you write it (Min of 2 characters).")
+            "Hey, you need to make a secret (Min of 2 characters).")
         if len(secret) < 2:
             os.system("clear")
             print(Fore.LIGHTRED_EX, "The secret has to be 2 or more length Try again.")
             print(Style.RESET_ALL)
+            os.system("clear")
             register()
         if user:
-            os.system("clear")
             print(Fore.RED, "Username not available.\nPlease try again.")
             print(Style.RESET_ALL)
             register()
         else:
+            os.system("clear")
             Database.collection.insert_one({'username': username, 'password': hashed_password, 'bank': 0, 'cash': 5000, 'secret_word': secret, 'admin': "False"})
             print(Fore.LIGHTGREEN_EX, "User Registered.")
             print(Style.RESET_ALL)
@@ -276,6 +268,7 @@ def reset():
     else:
         print(Fore.LIGHTRED_EX, "The secret you mention not valid\nTry again.")
         print(Style.RESET_ALL)
+        os.system("clear")
         reset()
 
 if __name__ == "__main__":
