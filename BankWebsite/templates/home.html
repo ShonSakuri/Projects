@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shon Bank</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1>Shon Bank</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="about">
+        <h2>Bank information</h2>
+        <p>Your Bank Information: {{ session.get('bank', 'Bank information not found') }}</p>
+      </section>
+    </main>
+  </body>
+</html>
