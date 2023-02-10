@@ -4,7 +4,7 @@ This repository contains a collection of various projects that I have worked on.
 
 ## Getting Started
 
-1. Clone the repository to your local machine using `git clone https://github.com/ShonSakuri/Projects.git`
+1. Clone the repository to your local machine using `git clone https://github.com/ShonDevelopment/Projects.git`
 2. Navigate to the project directory you want to run.
 3. Follow the instructions in the README file for that project to run it.
 
