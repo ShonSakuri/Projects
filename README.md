@@ -10,11 +10,11 @@ This repository contains a collection of various projects that I have worked on.
 
 ## List of Projects
 
-1. **Project 1** - [AdvancedGen](https://github.com/ShonSakuri/Projects/tree/master/AdvancedGen)
-2. **Project 2** - [Game](https://github.com/ShonSakuri/Projects/tree/master/Game)
-3. **Project 3** - [PasswordChecker](https://github.com/ShonSakuri/Projects/tree/master/PasswordChecker)
-4. **Project 4** - [PasswordGenerator](https://github.com/ShonSakuri/Projects/tree/master/PasswordGenerator)
-5. **Project 5** - [socket](https://github.com/ShonSakuri/Projects/tree/master/socket)
+1. **Project 1** - [AdvancedGen](https://github.com/ShonDevelopment/Projects/tree/master/AdvancedGen)
+2. **Project 2** - [Game](https://github.com/ShonDevelopment/Projects/tree/master/Game)
+3. **Project 3** - [PasswordChecker](https://github.com/ShonDevelopment/Projects/tree/master/PasswordChecker)
+4. **Project 4** - [PasswordGenerator](https://github.com/ShonDevelopment/Projects/tree/master/PasswordGenerator)
+5. **Project 5** - [socket](https://github.com/ShonDevelopment/Projects/tree/master/socket)
 
 ## Contributing
 
