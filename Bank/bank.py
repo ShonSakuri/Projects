@@ -149,17 +149,17 @@ def login():
 
                     elif command == "balance":
                         user = Database.collection.find_one(
-                            {"username": username, "password": password})
+                            {"username": username})
                         print(user['bank'])
 
                     elif command == "cash":
                         user = Database.collection.find_one(
-                            {"username": username, "password": password})
+                            {"username": username})
                         print(user['cash'])
 
                     elif command == "deposit":
                         main = Database.collection.find_one(
-                            {"username": username, "password": password})
+                            {"username": username})
                         if main:
                             balance = main['bank']
                             _cash = main['cash']
@@ -206,7 +206,7 @@ def login():
                         usr = input("user <-> ")
                         user = Database.collection.find_one({"username": usr})
                         main = Database.collection.find_one(
-                            {"username": username, "password": password})
+                            {"username": username})
                         if not user:
                             print(Fore.RED, "User not found.")
                             print(Style.RESET_ALL)
